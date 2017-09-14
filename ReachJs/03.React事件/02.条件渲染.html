@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="node_modules/react/dist/react.js"></script>
+    <script src="node_modules/react-dom/dist/react-dom.js"></script>
+    <script src="node_modules/babel-standalone/babel.js"></script>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+    //条件渲染
+    //定义用户页面
+    class User extends React.Component {
+        render() {
+            return (
+                    <p>我是用户</p>
+            )
+        }
+    }
+    //定义登录页面
+    class Login extends React.Component {
+        render() {
+            return (
+                    <p>请登录</p>
+            )
+        }
+    }
+    //根据初始属性判断,用户是否登录
+    class Condition extends React.Component {
+        static defaultProps = {
+            isLogin: false
+        }
+
+        render() {
+            if (this.props.isLogin) {
+                return (
+                        <User/>
+                )
+            }
+            return (
+                    <Login/>
+            )
+
+        }
+    }
+    //登录按钮
+    class LoginInButton extends React.Component {
+        render() {
+            return (
+                    <button onClick={this.props.click}>
+                        登录
+                    </button>
+            )
+        }
+    }
+    //登出按钮
+    class LoginOutButton extends React.Component {
+        render() {
+            return (
+                    <button onClick={this.props.click}>
+                        退出
+                    </button>
+            )
+        }
+    }
+    class LoginControl extends React.Component {
+        constructor(props) {
+            super(props)
+            this.state = {
+                loginState: false
+            }
+        }
+        //登录按钮点击事件
+        loginClick = () => {
+            this.setState({
+                loginState: true
+            })
+        }
+        //退出按钮点击事件
+        logoutClick = () => {
+            this.setState({
+                loginState: false
+            })
+        }
+
+        render() {
+            const state = this.state.loginState;
+            let button = null
+            if (state) {
+                button = <LoginOutButton click={this.logoutClick}/>
+            } else {
+                button = <LoginInButton click={this.loginClick}/>
+            }
+
+            return (
+                    <div>
+                        <Condition isLogin={state}/>
+                        {button}
+                    </div>
+            )
+        }
+    }
+    ReactDOM.render(<LoginControl/>, document.getElementById('root'))
+</script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="animate.css">
+    <style>
+        .out {
+            width:658px;
+            height:499px;
+            position:relative;
+            overflow: hidden;
+        }
+        .mask{
+            width:658px;
+            height: 499px;
+            background-color: rgb(0,0,0);
+            /*border:1px solid red;*/
+            position: absolute;
+            left: 0;
+            top: 200px;
+            line-height:15;
+            text-align: center;
+            color: white;
+            font-size: 30px;
+            -webkit-mask: -webkit-linear-gradient(top,rgba(0,0,0,0),rgba(0,0,0,1))
+        }
+        /*.out:hover .mask{*/
+            /*animation: fadeOutUp 2s;*/
+        /*}*/
+
+    </style>
+</head>
+<body>
+<div class="out">
+    <img src="images/pic.jpg" alt="">
+    <div class="mask">
+        视频
+    </div>
+</div>
+<script src="jquery-1.11.2.min.js"></script>
+<script>
+    var oMask = document.getElementsByClassName('mask')[0]
+    var speed = 5;
+    var oOut = document.getElementsByClassName('out')[0]
+    var timer = null;
+    oOut.onmouseover= function () {
+         clearInterval(timer);
+         timer= setInterval(function () {
+            oMask.style.top = oMask.offsetTop - speed + "px";
+            console.log(oMask.offsetTop);
+            if(oMask.offsetTop<=0){
+                clearInterval(timer);
+            }
+        },20)
+    }
+    oOut.onmouseout = function () {
+        clearInterval(timer);
+        timer= setInterval(function () {
+            oMask.style.top = oMask.offsetTop + speed + "px";
+            console.log(oMask.offsetTop);
+            if(oMask.offsetTop>=200){
+                clearInterval(timer);
+            }
+        },20)
+
+
+    }
+    
+//    $(function () {
+//        $('.mask').hover(function () {
+//            $('.mask').animate({'top':0},500)
+//        },function () {
+//            $('.mask').animate({'top':200},500)
+//        })
+//    })
+</script>
+
+</body>
+</html>

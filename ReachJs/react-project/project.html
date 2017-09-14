@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="node_modules/react/dist/react.js"></script>
+    <script src="node_modules/react-dom/dist/react-dom.js"></script>
+    <script src="node_modules/babel-standalone/babel.js"></script>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+
+    class Quit extends React.Component{
+        constructor(props){
+            super(props)
+            this.state={
+                quitState:false,
+                value:this.props.value
+            }
+        }
+
+        quitClick = () =>{
+            this.setState({
+                quitState:true
+            })
+        }
+
+        render(){
+            if(this.state.quitState){
+                return <UnLogin/>
+            }else{
+                return(
+                        <div>
+                            <p>{this.state.value}</p>
+                            <input type="submit" value="退出" onClick={this.quitClick}/>
+                        </div>
+                )
+            }
+
+        }
+    }
+
+    class Login extends React.Component{
+        constructor(props){
+            super(props)
+            this.state={
+                value:'',
+                loginState:false
+            }
+        }
+        loginChange = (e) =>{
+            this.setState({
+                value:e.target.value
+            })
+        }
+
+        loginClick = ()=>{
+            this.setState({
+                loginState:true
+            })
+        }
+        render(){
+            if(this.state.loginState){
+                return <Quit value={this.state.value}/>
+            }else{
+                return(
+                        <div>
+                            用户名:<input type="text" onChange={this.loginChange}/>
+                            <br/>
+                            密码:<input type="text"/>
+                            <br/>
+                            <input type="submit" onClick={this.loginClick}/>
+                        </div>
+                )
+            }
+
+        }
+    }
+
+    class UnLogin extends React.Component{
+
+        constructor(props){
+            super(props)
+            this.state ={
+                unLoginState:false
+            }
+        }
+
+        unLoginClick = () =>{
+            this.setState({
+                unLoginState:true
+            })
+        }
+
+        render(){
+            if(this.state.unLoginState){
+                return (<Login/>)
+            }else{
+                return(
+                        <div>
+                            <input type="submit" value="未登录"/>
+                            <br/>
+                            <input type="submit" value="登录" onClick={this.unLoginClick}/>
+                        </div>
+                )
+            }
+
+        }
+    }
+
+    ReactDOM.render(
+            <UnLogin/>,
+            document.getElementById('root')
+    )
+</script>
+</body>
+</html>

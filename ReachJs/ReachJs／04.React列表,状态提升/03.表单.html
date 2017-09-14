@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="node_modules/react/dist/react.js"></script>
+    <script src="node_modules/react-dom/dist/react-dom.js"></script>
+    <script src="node_modules/babel-standalone/babel.js"></script>
+    <style>
+        input{
+            margin:10px;
+        }
+    </style>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="text/babel">
+    /*
+    * 表单
+    * 表单输入:实质上事件的监听
+    * 监听文本输入的事件,根据事件获取的值来高边状态
+    * 例如:inputUsername 事件中拿到event,获取event.target.value , 执行setState改变对应的值
+    *
+    * */
+    class Login extends  React.Component{
+        constructor(props){
+            super(props)
+            this.state = {
+                username:'',
+                password:'',
+                usernameCheck:''
+            }
+        }
+
+        inputUsername = (e) => {
+            const username = e.target.value
+        this.setState({
+            username:username
+        })
+            if(username.length >= 6){
+                this.setState({
+                    usernameCheck:''
+                        })
+            }else{
+                this.setState
+                ({
+                    usernameCheck:'用户名小于6位'
+                })
+            }
+
+
+    }
+        inputPassword = (e) =>{
+        this.setState({
+            password:e.target.value
+        })
+    }
+
+        render(){
+            return(
+                    <div>
+                    <form>
+                        账号:<input type="text" onChange={this.inputUsername}/>
+                        <h1>{this.state.usernameCheck}</h1>
+                        <br/>
+                        密码:<input type="password" onChange={this.inputPassword}/><br/>
+                        <input type="submit" value="登录"/>
+                    </form>
+                        <p>{this.state.username}</p>
+                        <p>{this.state.password}</p>
+                    </div>
+            )
+        }
+    }
+
+    //选项与表单事件一致
+    // 监听事件
+    class Select extends React.Component{
+        changeProps = (e) => {
+            console.log(e.target.value)
+        }
+
+        render(){
+            return(
+                  <select onChange={this.changeProps}>
+                      <option>辽宁省</option>
+                      <option>吉林省</option>
+                      <option selected>河南省</option>
+                      <option>广东省</option>
+                  </select>
+            )
+        }
+    }
+    ReactDOM.render(
+            <Select/>,
+            document.getElementById('root')
+    )
+</script>
+</body>
+</html>

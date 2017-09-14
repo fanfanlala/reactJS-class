@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="src/style.css">
+</head>
+<body>
+<h1>你是猴子派来的救兵吗</h1>
+
+<div id="div1">我是二郎神派来的救兵</div>
+<div id="div2">
+    <ul>
+        <li>是班长派来的猴子</li>
+    </ul>
+</div>
+<h2>哇，有一群猴子！</h2>
+<div id="root"></div>
+<script>
+    var  div1 = document.getElementById('root')
+    var timer = null;
+    var num = 10;
+    div1.innerHTML = num;
+    timer = setInterval(function () {
+
+
+        if(num <= 0){
+            alert('boom');
+            clearInterval(timer)
+        }else{
+            num--;
+            div1.innerHTML=num;
+        }
+    },1000)
+</script>
+</body>
+</html>

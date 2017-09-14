@@ -1,0 +1,637 @@
+* {
+    margin:0;
+    padding:0;
+}
+
+.left{
+    float: left;
+}
+.right{
+    float: right;
+}
+.clearFloat::after{
+    content: '';
+    display: table;
+    clear: both;
+}
+.container::after{
+    content: '';
+    display: table;
+    clear: both;
+}
+.container{
+    width:1200px;
+    margin:0 auto;
+}
+
+/*灰色的导航栏*/
+nav{
+    height:30px;
+    background-color:rgb(240,240,240);
+    line-height: 30px;
+}
+nav ul li {
+    list-style-type: none;
+    float: left;
+    margin-right: 20px;
+    font-size: 10px;
+    color:darkgray;
+}
+nav ul li a{
+    text-decoration: none;
+    font-size: 10px;
+    color:darkgray;
+    margin-right:10px;
+}
+nav ul li a:hover{
+    color:rgb(232,0,111);
+}
+/*城市*/
+.address{
+    margin-right:38%;
+    background: url("img/nav/grayjiao.png") no-repeat 10px 0;
+    background-size: 35px 30px;
+    position: relative;
+}
+.address:hover{
+    background: url("img/nav/pinkjiao.png")no-repeat 10px 5px white;
+}
+.address:hover .addressMore{
+    display: block;
+}
+.address a:hover{
+    color:darkgray;
+}
+.more{
+    background: url("img/nav/grayjiao.png") no-repeat 10px 0 ;
+    background-size: 35px 30px;
+    position: relative;
+}
+
+.more:hover{
+    background: url("img/nav/pinkjiao.png")no-repeat 10px 5px white;
+}
+.addressMore{
+    padding:20px;
+    background-color: white;
+    width:250px;
+    border:1px solid lightgray;
+    position: absolute;
+    left:0;
+    top:29px;
+    display: none;
+}
+.addressMore div{
+    border-bottom:1px dashed black;
+    padding-bottom: 5px;
+    margin-bottom:10px;
+}
+.addressMore ul li{
+    list-style-type: none;
+    margin:10px 0;
+}
+.addressMore ul li a{
+    text-decoration: none;
+    font-size:10px ;
+    color:darkgray;
+}
+.addressMore ul li a:hover{
+    color:rgb(232,0,111);
+}
+
+.addressMore ul li span{
+    display: inline-block;
+    margin-right:10px;
+    font-size: 12px;
+}
+
+/*请登录*/
+
+.login{
+    background-color: white;
+    border:1px solid lightgray;
+    width:210px;
+    padding-left:50px;
+    position: absolute;
+    top:29px;
+    left:0;
+    display: none;
+}
+.login img{
+    margin-right:20px;
+}
+.login a{
+    text-decoration: none;
+    color:darkgray;
+    font-size: 10px;
+}
+.helloLogin{
+    margin-top:20px;
+    padding-bottom: 10px;
+    border-bottom: 1px dotted lightgray;
+}
+.loginWord{
+    margin-right:40px;
+}
+.loginWord a{
+    display: block;
+    margin:10px 0;
+}
+.loginImg{
+    margin-bottom:20px;
+}
+
+.pleaseLogin{
+    position: relative;
+}
+.pleaseLogin:hover .login{
+    display: block;
+
+}
+.pleaseLogin:hover{
+    background-color: white;
+}
+
+/*签到有礼*/
+.allGift{
+    position: relative;
+}
+.allGift:hover .gift{
+    display: block;
+}
+.allGift:hover{
+    background-color: white;
+}
+.gift{
+    width:460px;
+    text-align: center;
+    background-color: white;
+    border:1px solid lightgray;
+    position: absolute;
+    top:29px;
+    left:-300%;
+    display: none;
+}
+.giftImg img{
+    border-bottom:1px solid lightgray;
+    padding-bottom: 10px;
+}
+.giftWold{
+    margin:10px 0;
+}
+.giftWold a{
+    text-decoration: none;
+    color:darkgray;
+    font-size: 10px;
+}
+.giftEvery{
+    border-bottom: 1px solid lightgray;
+    margin-right:60px;
+}
+.giftEvery:hover{
+    color:rgb(232,0,111);
+    border-bottom: 1px solid rgb(232,0,111);
+}
+.giftWold .giftInform{
+    padding:3px 13px;
+    background-color: rgb(232,0,111);
+    border-radius: 3px;
+    color:white;
+}
+/*我的特卖*/
+.allSpecial,.allPhone{
+    position: relative;
+}
+.allSpecial:hover .special,
+.allPhone:hover .phone{
+    display: block;
+}
+.allSpecial:hover,.allPhone:hover{
+    background-color: white;
+}
+.special{
+    width:90px;
+    padding:10px;
+    border:1px solid lightgray;
+    background-color: white;
+    display: none;
+    position: absolute;
+    top:29px;
+    left:-4px;
+}
+.special a{
+    text-decoration: none;
+    margin:20px 0 ;
+    color:darkgray;
+    font-size:10px;
+}
+.special a:hover{
+    color:rgb(232,0,111);
+}
+/*手机版*/
+.phone{
+    width:180px;
+    background-color: white;
+    border:1px solid lightgray;
+   position: absolute;
+    right:-4px;
+     top:29px;
+    display: none;
+}
+.phone img{
+    margin:10px;
+}
+.phone a{
+    text-decoration: none;
+    font-size: 14px;
+    color:darkgray;
+    margin-left:50px;
+}
+.phone a:hover{
+    color:rgb(232,0,111);
+}
+/*更多*/
+.more:hover .lastMore{
+    display: block;
+}
+.lastMore{
+    width:300px;
+    background-color: white;
+    padding:20px 0 20px 20px;
+    border:1px solid lightgray;
+    position: absolute;
+    top:29px;
+    right:0;
+    display: none;
+}
+
+.lastMore-title{
+    font-size: 14px;
+    margin:10px 0;
+    color:black;
+}
+
+.lastMore a{
+    text-decoration: none;
+    font-size: 10px;
+    color:darkgray;
+}
+.lastMore a:hover{
+    color:rgb(232,0,111);
+}
+
+/*logo*/
+.logo{
+    height:100px;
+    line-height: 100px;
+}
+.logoImg{
+    margin-top:32px;
+}
+.logo span{
+    font-size:12px;
+    display: inline-block;
+    margin-right: 50px;
+}
+
+
+/*粉色的导航栏*/
+.pinkNav{
+    height:40px;
+    background-color: rgb(232,0,111);
+    line-height: 40px;
+}
+.pinkNav ul li {
+    list-style-type: none;
+    float: left;
+    padding:0 25px;
+}
+.pinkNav ul li a{
+    color:white;
+    font-size: 16px;
+    text-decoration: none;
+    font-weight: lighter;
+}
+.pinkNav ul li:nth-child(1){
+    background-color:rgb(171,0,86) ;
+}
+.pinkNav ul li:hover{
+    background-color:rgb(171,0,86) ;
+}
+.theClass{
+    margin-left: 105px;
+}
+.pinkHot{
+    vertical-align: middle;
+    margin-right:10px;
+}
+.pinkMore{
+    width:810px;
+    text-align: center;
+    background-color: white;
+    box-shadow: 1px 1px 2px lightgray;
+    padding:20px 0 ;
+    position: absolute;
+    top:39px;
+    left:-730px;
+    display: none;
+    z-index: 3;
+}
+.pinkMore .pinkImg{
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+}
+.pinkMore div img{
+    border-radius: 4px;
+}
+.pinkImg{
+    width:250px;
+    height:140px;
+    overflow: hidden;
+}
+.pinkMark{
+    /*background-color: black;*/
+    width:250px;
+    display: none;
+    height:180px;
+    position: absolute;
+    left:0;
+    top:-20px;
+    color:white;
+    line-height: 210px;
+    border-radius:4px;
+    background-image:linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0.8)) ;
+
+    animation: pinkMarkLine 1s ;
+}
+@keyframes pinkMarkLine {
+    from{
+        top:100px;
+    }
+    to{
+        top:-20px;
+    }
+}
+
+.pinkImg:hover .pinkMark{
+    display: block;
+}
+.pinkOther{
+    position: relative;
+}
+.pinkOther:hover .pinkMore{
+    display: block;
+}
+
+/*黑色的导航栏*/
+.blackNav{
+    width:40px;
+    height: 100%;
+    background-color: black;
+    z-index: 5;
+    position: fixed;
+    top:0;
+    right:0;
+}
+.blackNav ul{
+    width:40px;
+    height:70px;
+}
+.blackNav ul li{
+    list-style-type: none;
+}
+.black-first a{
+    color:white;
+    text-decoration: none;
+    font-size:18px;
+    font-weight: lighter;
+}
+.black-first{
+    text-align: center;
+    width:30px;
+    margin:0 auto;
+    padding:5px;
+    background-color: rgb(252,162,126);
+    margin-top:201px;
+    position: relative;
+}
+.black-first-hidden{
+    position: absolute;
+    top:0;
+    right:40px;
+    z-index: -2;
+    display: none;
+    animation: blackHidden 1s;
+}
+.black-first:hover .black-first-hidden{
+    display: block;
+}
+@keyframes blackHidden {
+    from{
+        right:-210px;
+    }
+    to{
+        right:40px;
+    }
+}
+
+.black-person{
+    text-align: center;
+    z-index: 3;
+    background-color: black;
+    border-top:10px solid black;
+    border-bottom:10px solid black;
+    position: relative;
+}
+
+.black-person:hover{
+    background-color:rgb(232,0,111) ;
+}
+.black-person:hover .black-person-hidden{
+    display: block;
+}
+.black-person a{
+    text-decoration: none;
+    color:white;
+    font-size: 12px;
+    font-weight: lighter;
+}
+.black-shopping{
+    text-align: center;
+    width:20px;
+    margin:0 auto;
+    padding:10px;
+    z-index: 3;
+    background-color:rgb(232,0,111);
+}
+.black-shopping a{
+    color:white;
+    text-decoration: none;
+    font-size:14px;
+    font-weight: lighter;
+}
+.shopping{
+    width:20px;
+    height:20px;
+    margin:10px auto;
+    background-color: white;
+    border-radius: 50%;
+    color:rgb(232,0,111);
+}
+.black-icon{
+    width:24px;
+    margin: 5px auto;
+    padding: 5px 8px;
+    position: relative;
+}
+.black-icon:hover .black-icon-hidden{
+    display: block;
+}
+.black-icon:hover{
+    background-color: rgb(232,0,111);
+}
+.blackNav .black-pen{
+    margin-top:53px;
+}
+
+/*账号隐藏*/
+.black-person-hidden{
+    width:275px;
+    background-color: white;
+    text-align: center;
+    box-shadow: 1px 1px 2px lightgray;
+    position: absolute;
+    right:40px;
+    top:0;
+    z-index: -4;
+    display: none;
+    padding-top:20px;
+
+    animation: blackPersonHidden 1s ;
+}
+
+.black-person-delete{
+    position: absolute;
+    top:10px;
+    right:20px;
+    color:lightgray;
+    cursor: pointer;
+}
+
+
+@keyframes blackPersonHidden {
+    from{
+        right:-235px;
+    }
+    to{
+        right:40px;
+    }
+}
+.black-person-hidden span{
+    font-size:10px;
+    font-weight: lighter;
+}
+.black-person-hidden a{
+    text-decoration: none;
+    font-size:10px;
+    color:rgb(232,0,111);
+}
+.black-person-mys{
+    height:105px;
+    width:275px;
+    background-color: rgb(246,246,246);
+    border-top:1px solid lightgray;
+    border-bottom:1px solid lightgray;
+}
+.black-person-mys div{
+    width:60px;
+    height:85px;
+    margin-top:25px;
+    margin-left:38px;
+}
+.black-person-line{
+    display: inline-block;
+    height:65px;
+    width:1px;
+    margin-top:25px;
+    background-color: lightgray;
+    margin-left:30px;
+}
+.black-person-mys div a{
+   color:black;
+    display: block;
+}
+.black-person-mys div a:hover {
+    color:rgb(232,0,111);
+}
+.black-person-hidden .black-person-vip{
+    display: inline-block;
+    color:skyblue;
+    margin-left:-20px;
+    margin-bottom:40px;
+}
+
+.black-icon-hidden{
+    background-color: white;
+    width:120px;
+   height: 38px;
+    text-align: center;
+    border:1px solid lightgray;
+    position: absolute;
+    top:0;
+    z-index: -5;
+   line-height: 38px;
+    animation: blackIcon 1s;
+    display: none;
+}
+@keyframes blackIcon {
+    from{
+        right:-120px;
+    }
+    to{
+        right:40px;
+    }
+}
+
+/*轮播图*/
+.swiper{
+    position: relative;
+}
+.swiperImg{
+position:absolute;
+    top:11%;
+    left:17.5%;
+    width:65%;
+    height:61%;
+}
+.swiper-bottom{
+    width:1064px;
+    text-align: center;
+    padding:10px 0;
+    background-color: white;
+    box-shadow: 1px 1px 2px lightgray;
+    position: absolute;
+    top:72%;
+    left:16.5%;
+}
+.swiper-bottom div{
+    display: inline-block;
+}
+.swiper-bottom a{
+    text-decoration: none;
+    font-size: 12px;
+    color:darkgray;
+    margin-right:30px;
+}
+.swiper-bottom a:hover{
+    color:black;
+}
+.swiperPink{
+    display: block;
+    width:157px;
+    height:3px;
+    margin-top:10px;
+    margin-left:-5px;
+    background-color: rgb(232,0,111);
+}

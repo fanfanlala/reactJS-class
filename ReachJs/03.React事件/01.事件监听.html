@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="node_modules/react/dist/react.js"></script>
+    <script src="node_modules/react-dom/dist/react-dom.js"></script>
+    <script src="node_modules/babel-standalone/babel.js"></script>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+    class Switch extends React.Component{
+        constructor(props){
+            super(props)
+            //状态赋初值
+            this.state ={
+                isOn:true
+            }
+            //事件绑定this ES6的时候才需要
+           // this.click = this.click.bind(this)
+        }
+
+        //如果不想函数总Bind This
+        //方式-:属性初始化器
+        click = () => {
+            this.setState ({
+                isOn:!this.state.isOn
+            })
+        }
+
+
+        //方式二:箭头函数的形式
+        //一般用方式一,会造成性能问题,父组件给子组件传值重新渲染
+        //onClick = {(e)=>this.click(e)}
+
+
+//        click(){
+//            this.setState ({
+//                isOn:!this.state.isOn
+//            })
+//        }
+
+        render(){
+           var title = this.state.isOn ? '开':'关'
+            return(
+                    <button onClick={this.click}>{title}</button>
+            )
+        }
+    }
+
+    ReactDOM.render(<Switch/>,document.getElementById('root'))
+
+</script>
+</body>
+</html>

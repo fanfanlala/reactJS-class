@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="node_modules/react/dist/react.js"></script>
+    <script src="node_modules/react-dom/dist/react-dom.js"></script>
+    <script src="node_modules/babel-standalone/babel.js"></script>
+</head>
+<body>
+<div id="root"></div>
+<div id="app"></div>
+<div id="myapp"></div>
+<div id="input"></div>
+<script type="text/babel">
+    /*
+    * 1.组件
+    * 1>组件就是一个函数,
+    * 2>函数的参数为props,
+    * 3>函数的返回值为React元素
+    * */
+
+    /*
+    * 2.驼峰分为小驼峰和驼峰
+    * 驼峰:第一个单词首字母大写 后续单词首字母大写  例:ClassName
+    * 小驼峰:第一个单词首字母小写 后续单词首字母大写  例:className
+    *
+    * */
+
+
+    //3.组件与函数不同,命名为驼峰命名 首字母大写
+    //定义组件方式一:
+    /*
+    * 4.组件的组成部分
+    *    1> props属性
+    *       例:<img src="" name="" id="" />
+    *          其中img为组件,src则为prop 的一个属性
+    *          props.src  props.name  props.id
+    *          props={
+    *              src:'',
+    *              name:'',
+    *              id:''
+    *            }
+    *    2> 返回值  返回react元素
+    *       元素 就是一个 JSX 的对象
+    *       组件 的返回值是元素,但 元素 不是 组件
+    * */
+
+
+    function Welcome(props) {
+        return <h1>hello,{props.name}</h1>
+    }
+
+    //定义组件方式二:ES6 class
+    /*
+    * class 组件名 继承(extends)  React的组件
+    *   1> 获取属性
+    *      this.props
+    *   2> 返回 React 元素
+    *      需要在 render 渲染函数中 返回
+    * */
+    class Welcome1 extends React.Component{
+        //渲染函数
+        render(){
+            //返回的是  React元素
+            return <h1>HEllo,{this.props.name}</h1>
+        }
+    }
+    /*
+    * props = {
+    *    name:'凡凡'
+    *    }
+    * */
+
+    //Welcome Welcome1 都是自定义组件
+    const element = <Welcome1 name="张三"/>
+    ReactDOM.render(
+            element,
+            document.getElementById('root')
+    )
+
+    //5.组合组件
+    class App extends React.Component {
+        render() {
+            return (
+                    <div>
+                        <Welcome name="小红"/>
+                        <Welcome name="小绿"/>
+                        <Welcome name="小黄"/>
+                    </div>
+            )
+        }
+    }
+
+    const app = <App/>
+
+    ReactDOM.render(
+            app,
+            document.getElementById('app')
+    )
+
+    //6.组件提取
+    //组件提取,便于维护
+    //保证代码足够精简,比如:Header 组件  header中所有的内容
+    class Header extends React.Component{
+        render(){
+            return (
+                    <div className="Header">
+                        <p>标题1</p>
+                        <p>标题2</p>
+                        <p>标题3</p>
+                        <p>标题4</p>
+                        <p>标题5</p>
+                        <p>标题6</p>
+                        <p>标题7</p>
+                        <p>标题8</p>
+                    </div>
+            )
+        }
+    }
+
+    class Content extends React.Component{
+        render(){
+            return (
+                    <div className="Content">
+                        <p>内容1</p>
+                        <p>内容2</p>
+                        <p>内容3</p>
+                        <p>内容4</p>
+                        <p>内容5</p>
+                        <p>内容6</p>
+                        <p>内容7</p>
+                        <p>内容8</p>
+                        <p>内容9</p>
+                    </div>
+            )
+        }
+    }
+
+    class Footer extends React.Component{
+        render(){
+            return(
+                    <div className="Footer">
+                        <p>尾部1</p>
+                        <p>尾部2</p>
+                        <p>尾部3</p>
+                        <p>尾部4</p>
+                        <p>尾部5</p>
+                        <p>尾部6</p>
+                        <p>尾部7</p>
+                        <p>尾部8</p>
+                    </div>
+            )
+        }
+    }
+
+    class MyAppNew extends React.Component{
+        render(){
+            return(
+                    <div>
+                        <Header/>
+                        <Content/>
+                        <Footer/>
+                    </div>
+            )
+        }
+    }
+
+    class MyApp extends React.Component{
+        render(){
+            return (
+                    <div>
+                        <div className="Header">
+                            <p>标题1</p>
+                            <p>标题2</p>
+                            <p>标题3</p>
+                            <p>标题4</p>
+                            <p>标题5</p>
+                            <p>标题6</p>
+                            <p>标题7</p>
+                            <p>标题8</p>
+                        </div>
+                        <div className="Content">
+                            <p>内容1</p>
+                            <p>内容2</p>
+                            <p>内容3</p>
+                            <p>内容4</p>
+                            <p>内容5</p>
+                            <p>内容6</p>
+                            <p>内容7</p>
+                            <p>内容8</p>
+                            <p>内容9</p>
+                        </div>
+                        <div className="Footer">
+                            <p>尾部1</p>
+                            <p>尾部2</p>
+                            <p>尾部3</p>
+                            <p>尾部4</p>
+                            <p>尾部5</p>
+                            <p>尾部6</p>
+                            <p>尾部7</p>
+                            <p>尾部8</p>
+                        </div>
+                    </div>
+            )
+        }
+    }
+
+    ReactDOM.render(
+            <MyAppNew/>,
+            document.getElementById('myapp')
+    )
+
+    //7.props属性只读
+    //无论使用何种方式创建组件,属性均不能修改
+
+    class Input extends React.Component{
+        render(){
+            return (
+                    <input type="text" value={this.props.value}/>
+            )
+        }
+    }
+    ReactDOM.render(
+            <Input value="我是输入框"/>,
+                document.getElementById('input'));
+
+</script>
+</body>
+</html>

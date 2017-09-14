@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="node_modules/react/dist/react.js"></script>
+    <script src="node_modules/react-dom/dist/react-dom.js"></script>
+    <script src="node_modules/babel-standalone/babel.js"></script>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+    //函数的写法
+    function Clock(props) {
+        return <h1>hello,{props.title}</h1>
+    }
+    //class 写法
+    class FinalClock extends React.Component{
+        //构造器函数 对class呢神进行初始化
+        constructor(){
+            super()
+            this.state = {
+                date:new Date()
+            }
+            setInterval(function () {
+                this.setState ({
+                    date:new Date()
+                })
+            }.bind(this),1000)
+        }
+
+
+
+
+        render(){
+            return (
+                    <div>
+                        <h1>hello,{this.props.title}</h1>
+                        <h2>It is {this.state.date.toLocaleTimeString()}</h2>
+                    </div>
+
+            )
+
+        }
+    }
+    ReactDOM.render(
+            <FinalClock title="回顾"/>,
+            document.getElementById('root')
+    )
+
+
+</script>
+</body>
+</html>

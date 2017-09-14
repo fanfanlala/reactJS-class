@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="node_modules/react/dist/react.js"></script>
+    <script src="node_modules/react-dom/dist/react-dom.js"></script>
+    <script src="node_modules/babel-standalone/babel.js"></script>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+   var array = [1,2,3,4,5]
+//    var liList = array.map((item)=>{
+//        return <li>{item}</li>
+//    })
+//   console.log(liList)
+//    var liListArray = array.map((item)=> <li>{item}</li>)
+//   console.log(liList)
+//   console.log(liListArray)
+
+   //列表渲染
+   /*
+   * 1.遍历列表可以使用JS的常规函数 例如:map foreach
+   * 2.数组中的元素,在遍历时,需要添加key
+   * 3.key是提供给React去执行增删改查操作的
+   * 4.key是对无二的字符串,如果重复会报错
+   * 5.如果key相同,渲染元素时,不会重复渲染
+   * ps: 一般key会被设置为对象的id属性,或数组的对象索引(下标)
+   * */
+//   class NumberList extends React.Component{
+//       render(){
+//           const array = this.props.list
+//           var liArray = array.map((item,index)=><li key={index.toString()}>{item}</li>)
+//           return(
+//               <ul>
+//                   {liArray}
+//               </ul>
+//           )
+//       }
+//   }
+
+   class ListItem extends React.Component{
+       render(){
+           return(
+                   <li>{this.props.value}</li>
+           )
+       }
+   }
+
+   class List extends React.Component{
+       render(){
+           const array = this.props.list
+           let list = array.map((item,index)=><ListItem value={item} key={index.toString()}/>)
+           return(
+                   <ul>{list}</ul>
+           )
+       }
+   }
+
+
+    ReactDOM.render(
+            <List list={array}/>,
+            document.getElementById('root')
+    )
+
+
+
+</script>
+</body>
+</html>

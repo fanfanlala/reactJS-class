@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="node_modules/react/dist/react.js"></script>
+    <script src="node_modules/react-dom/dist/react-dom.js"></script>
+    <script src="node_modules/babel-standalone/babel.js"></script>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+    class UnreadMessage extends React.Component{
+        static defaultProps = {
+            unreadMessages :[]
+        }
+        render(){
+            const unreadMessages =  this.props.unreadMessages
+            //简化前 :if判断方式
+           // let unreadComponent = null
+//            if( unreadMessages.length > 0){
+//                unreadComponent = (
+//                        <div>
+//                            <p>你有{unreadMessages.length}条未读信息</p>
+//                        </div>
+//                )
+//            }
+
+            //简化后
+            //A条件 && B条件
+            //一假则假
+            //true && expression ,返回 expression
+            //false && expression, 返回 false
+            let unreadComponent = unreadMessages.length > 0 &&(<div><p>你有{unreadMessages.length}条唯独信息</p></div>)
+            return (
+                    <div>
+                      <h1>hello!</h1>
+                        {unreadComponent}
+                    </div>
+            )
+        }
+    }
+
+    var array = ['react','Re:React','Re:ReactMessage']
+    ReactDOM.render(
+            <UnreadMessage unreadMessages={array}/>,
+            document.getElementById('root')
+    )
+</script>
+</body>
+</html>

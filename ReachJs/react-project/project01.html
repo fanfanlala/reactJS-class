@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="node_modules/react/dist/react.js"></script>
+    <script src="node_modules/react-dom/dist/react-dom.js"></script>
+    <script src="node_modules/babel-standalone/babel.js"></script>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+    class UnLogin extends React.Component{
+        render(){
+            return (
+                    <div>
+                        <input type="submit" value="未登录"/>
+                        <br/>
+                        <input type="submit" value="登录" onClick={this.props.click}/>
+                    </div>
+            )
+        }
+    }
+
+    class Login extends React.Component{
+
+        render(){
+            return(
+                    <div>
+                        用户名:<input type="text" onChange={this.props.changeValue}/>
+                        <br/>
+                        密码:<input type="text"/>
+                        <br/>
+                        <input type="submit" onClick={this.props.click}/>
+                    </div>
+            )
+        }
+    }
+
+    class Quit extends React.Component{
+
+        render(){
+                return(
+                        <div>
+                            <p>用户：{this.props.value}</p>
+                            <input type="submit" value="退出" onClick={this.props.click}/>
+                        </div>
+                )
+            }
+    }
+
+    class Control extends React.Component{
+        constructor(props){
+            super(props)
+            this.state={
+                allState:'',
+                value:''
+            }
+        }
+        loginChange = (e) =>{
+            this.setState({
+                value:e.target.value
+            })
+        }
+
+        unLoginClick = () =>{
+            this.setState({
+                allState:'login'
+            })
+        }
+
+        loginClick = () =>{
+            this.setState({
+                allState:'quit'
+            })
+        }
+
+        quitClick = () =>{
+            this.setState({
+                allState:'unLogin'
+            })
+        }
+
+        render(){
+            if(this.state.allState === 'login'){
+                return <Login click={this.loginClick} changeValue={this.loginChange}/>
+            }
+            if(this.state.allState === 'quit'){
+                return <Quit click= {this.quitClick} value={this.state.value}/>
+            }
+            if(this.state.allState === 'unLogin'){
+                return <UnLogin click = {this.unLoginClick}/>
+            }
+            return (
+                    <UnLogin click = {this.unLoginClick}/>
+            )
+        }
+
+    }
+
+    ReactDOM.render(
+            <Control/>,
+            document.getElementById('root')
+    )
+</script>
+</body>
+</html>

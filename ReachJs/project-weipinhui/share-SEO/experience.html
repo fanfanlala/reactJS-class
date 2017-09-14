@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #div1{
+            width:800px;
+            height:800px;
+            border:5px solid green;
+            position: relative;
+        }
+        #box{
+            width:100px;
+            height: 100px;
+            background-color: green;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+<div id="div1">
+    <div id="box"></div>
+</div>
+<script>
+    var div1 = document.getElementById('div1');
+    var box = document.getElementById('box');
+    var speedY = 5;
+    var speedX = 4;
+    setInterval(function () {
+        if(box.offsetLeft < 0 || box.offsetLeft >= div1.clientWidth-box.clientWidth){
+            speedX = -speedX;
+        }
+
+        if(box.offsetTop < 0 || box.offsetTop >= div1.clientHeight-box.clientHeight){
+            speedY = -speedY
+        }
+
+        box.style.left = box.offsetLeft + speedX + 'px';
+        box.style.top = box.offsetTop + speedY + 'px';
+    },20)
+
+</script>
+</body>
+</html>

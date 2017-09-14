@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="node_modules/react/dist/react.js"></script>
+    <script src="node_modules/react-dom/dist/react-dom.js"></script>
+    <script src="node_modules/babel-standalone/babel.js"></script>
+    <style>
+        .h1{
+            color:red;
+        }
+    </style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+    //以下则为JSX 语法
+    //HTML 混合 js , JSX是js的扩展
+    //1. 定义常量 element
+    //const element = <h1>hello,react</h1>
+    //2. 在JSX中使用表达式
+    function formatName(user) {
+        return user.firstName + '' + user.lastName;
+    };
+    const  user = {
+        firstName:'凡凡',
+        lastName:'李'
+    };
+    //3.元素中的标签只能有一个根标签
+    //如果有多个使用div或其他括起来
+    const element  = (
+            <div>
+                <h1>{formatName(user)}</h1>
+                <h1>{formatName(user)}</h1>
+                <h1>{formatName(user)}</h1>
+                <h1>{formatName(user)}</h1>
+            </div>
+
+    )
+    //4.元素多个时,推荐使用小括号括起来,防止出现分号插入问题
+
+    //5.JSX 本身也是js 也可以作为参数,作为if判断的条件,返回值
+    var a = 10
+    function returnA() {
+        return a
+    }
+    function returnJSX() {
+        return element
+    }
+    function returnJSX1() {
+        return <div><h1>{formatName(user)}</h1></div>
+    }
+
+    //6.jsx 的属性
+    /*
+    * JXS的属性赋值方式两种
+    * 字符串  "字符串的内容"
+    * 变量   {变量名}
+    * */
+    const attrElement = <h1 className='h1'>李易峰</h1>
+    const src = 'http://img0.imgtn.bdimg.com/it/u=1957160691,3314523637&fm=26&gp=0.jpg';
+    const imgElement = <img className="myImage" src={src} id="my"/>
+
+    //7.JSX 代表 object
+    /*
+    * Babel会将 JSX 对一个转化为 React.createElement();
+    * 参数为空,填 null
+    * imgElement 被 babel 编译时,会形成如下效果
+    * */
+
+    var reactElement = React.createElement(
+            'img',
+            {
+                src:src,
+                className:'myImage'
+            },
+            null
+    )
+    //等同于6
+
+
+
+    //渲染
+    /*
+    * 参数1:元素
+    * 参数2:容器
+    * */
+    ReactDOM.render(
+            imgElement,
+            document.getElementById('root')
+    )
+
+
+</script>
+</body>
+</html>

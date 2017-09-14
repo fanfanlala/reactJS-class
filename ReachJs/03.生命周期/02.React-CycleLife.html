@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="node_modules/react/dist/react.js"></script>
+    <script src="node_modules/react-dom/dist/react-dom.js"></script>
+    <script src="node_modules/babel-standalone/babel.js"></script>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+    class CycleLife extends React.Component{
+        //JS是弱类型语言
+        //类型声明,类型检查器
+        static propTypes = {
+            title:React.PropTypes.string
+        }
+        //默认属性值
+        static defaultProps = {
+            title:'初始标题'
+        }
+
+
+        //1.装配 渲染
+        //constructor
+        //componentWillMount
+        //componentDidMount
+        //三个函数 只执行一次
+        constructor(props){
+            super(props)
+            //alert('构造器')
+            console.log('构造器')
+            this.state={
+                date:new Date()
+            }
+
+        }
+        //不要在该函数中,修改状态
+        componentWillMount(){
+            //alert('组件将要挂载')
+            console.log('组件将要挂载')
+        }
+        render(){
+            //alert('组件被渲染')
+            console.log('组件被渲染')
+            console.log(this.props.title)
+            return (
+                    <div>
+                        <h1>hello,{this.props.title}</h1>
+                        <h2>{this.state.date.toLocaleTimeString()}</h2>
+                    </div>
+
+            )
+        }
+
+        //该函数中 一般编写网络请求你代码
+        //修改压面内容 setState
+        componentDidMount(){
+            //alert('组件已经挂载')
+            console.log('组件已经挂载')
+//            setInterval(function () {
+//                this.setState({
+//                    date:new Date()
+//                })
+//            }.bind(this),1000)
+
+        }
+
+        // 2.更新
+        // 当父级重渲染的时候,会重新给子组件属性赋值,会调用receiveProps,执行顺序1> - 5>(属性变化)
+        // 装配期间componentWillReceiveProps不会调用
+        // 1> componentWillReceiveProps
+        // 当组件本身状态发生变化时,会触发更新过程 2> - 5>(状态变化)
+        // 2> shouldComponentUpdate
+        // 3> componentWillUpdate
+        // 4> render
+        // 5> componentDidUpdate
+        //组件将要接收props
+        componentWillReceiveProps(nextProps){
+            //alert('组件将要接收Props')
+            console.log('组件将要接收Props')
+
+        }
+
+        //是否应该更新组件
+        shouldComponentUpdate(){
+          //返回值为true 或 false
+            //默认返回值为true
+            console.log('判断是否应该更新组件')
+            return true;
+           // alert('判断是否应该更新组件')
+
+        }
+
+        //组件将要更新
+        componentWillUpdate(){
+            //alert('组件将要更新')
+            console.log('组件将要更新')
+        }
+
+        //组件已经更新
+        componentDidUpdate(){
+            //alert('组件已经更新')
+            console.log('组件已经更新')
+        }
+
+        // 3.卸载
+        //组件被销毁时,处理一些需要销毁的内容,例如:解绑定时器,取消网络请求.....
+        componentWillUnmount(){
+            console.log('卸载组件')
+        }
+    }
+
+    class FatherComponent extends  React.Component{
+        constructor(props){
+            super()
+            this.state = {
+                title:'重新赋值的标题'
+            }
+        }
+        render(){
+            return (
+                    <CycleLife/>
+            )
+        }
+
+        componentDidMount(){
+            this.setState({
+                title:'标题改成别的'
+            })
+        }
+    }
+
+    ReactDOM.render(<FatherComponent/>,document.getElementById('root'));
+
+//    ReactDOM.unmountComponentAtNode(document.getElementById('root'));
+</script>
+</body>
+</html>

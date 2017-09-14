@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery i18n Plugin</title>
+    <style type="text/css">
+        body {
+            font-size: 30px;
+            text-align: center;
+        }
+
+        input {
+            font-size: 30px;
+        }
+
+        p {
+            font-size: 17px;
+        }
+    </style>
+</head>
+<script src="../jquery-1.4.2.js"></script>
+<script src="../jquery.i18n.min.js"></script>
+<body>
+<h1>
+    点击👇就会有惊喜
+</h1>
+<div id='test1'>Test  One</div>
+<div id='test2'>Test2  Two</div>
+<div id='test3'>Test3  Three</div>
+<div id='test4'>Test4  Four</div>
+<div id='test5'>Test5  Five</div>
+<input type='button' id='btn' value='Internationalize!'/>
+
+<script>
+    i18n_dict = {
+        'test1':'测试1',
+        'test2':'测试2',
+        'test3':'测试3',
+        'test4':'测试4',
+        'test5':'测试5'
+    }
+    
+    $.i18n.load(i18n_dict)
+    $('#btn').click(function () {
+        $('#test1')._t('test1');
+        $('#test2')._t('test2');
+        $('#test3')._t('test3');
+        $('#test4')._t('test4');
+        $('#test5')._t('test5');
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="node_modules/react/dist/react.js"></script>
+    <script src="node_modules/react-dom/dist/react-dom.js"></script>
+    <script src="node_modules/babel-standalone/babel.js"></script>
+</head>
+<body>
+
+<div id="root"></div>
+<script type="text/babel">
+    //定义数组
+    const  array = ['213','323','455','666','656']
+    //编写元素,JSX语法
+    //遇到 < 以HTML编译,遇到{ 以js编译
+    const element = (
+            <div>
+                {
+                        //ES5的数组高阶函数
+                        array.map(function (item) {
+                            return <p>{item}</p>
+                        })
+                }
+            </div>
+    )
+    ReactDOM.render(element,document.getElementById('root'));
+</script>
+</body>
+</html>

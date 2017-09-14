@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="node_modules/react/dist/react.js"></script>
+    <script src="node_modules/react-dom/dist/react-dom.js"></script>
+    <script src="node_modules/babel-standalone/babel.js"></script>
+</head>
+<body>
+<script type="text/babel">
+//    var NotesList = React.createClass({
+//        render:function () {
+//            return(
+//                    <ol>
+//                        {
+//                                React.Children.map(this.props.children,function (child) {
+//                 return <li>{child}</li>
+//                                })
+//                        }
+//                    </ol>
+//            )
+//        }
+//    })
+//
+//    ReactDOM.render(
+//            <NotesList>
+//                <span>hello</span>
+//                <span>world</span>
+//            </NotesList>
+//    )
+
+
+    var MyTitle = React.createClass({
+        propTypes:{
+            title:React.PropTypes.string.isRequired,
+        },
+        render:function () {
+            return <h1>{this.props.title}</h1>
+        }
+    })
+
+</script>
+</body>
+</html>
